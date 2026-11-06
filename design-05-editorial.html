@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>幸运无限官网设计稿 05 · 杂志 · 编辑排版 · Lucky Infinite</title>
+<style>
+:root{--bg:#ffffff;--bg-2:#f5f5f2;--surface:#ffffff;--surface-2:#f1f1ee;--ink:#111111;--ink-2:#4a4a4a;--ink-3:#8a8a8a;--line:#dcdcd7;--acc:#c8382b;--acc-2:#111111;--acc-ink:#ffffff;--nav-bg:#ffffff;--dev-1:#f0f0ec;--dev-2:#d6d6d0;--dev-line:#b9b9b2;--dev-hi:#ffffff;--dev-shadow:#9a9a92;--scr-1:#1a1a1a;--scr-2:#3a3a3a;--scr-card:rgba(255,255,255,.10);--scr-ink:#ffffff;--radius:0px;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit;border:0;background:none;cursor:pointer}
+img,svg{display:block}
+.wrap{width:min(1180px,calc(100% - 64px));margin:0 auto}
+.sec{padding:104px 0;position:relative}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.2em;font-weight:700;color:var(--acc);text-transform:uppercase}
+h2{font-size:clamp(30px,3.6vw,50px);line-height:1.25;letter-spacing:-.03em;font-weight:700;margin:16px 0 18px}
+.lead{font-size:16px;color:var(--ink-2);line-height:1.9;max-width:660px}
+.sec-head{margin-bottom:52px}
+.sec-head h2{margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap;transition:transform .25s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--acc);color:var(--acc-ink);box-shadow:0 10px 26px -10px var(--acc)}
+.btn-primary:hover{box-shadow:0 16px 32px -10px var(--acc)}
+.btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.arr{font-size:16px}
+.nav{position:sticky;top:0;z-index:60;background:var(--nav-bg);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav-in{width:min(1180px,calc(100% - 64px));margin:0 auto;height:72px;display:flex;align-items:center;gap:28px;position:relative}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;font-size:17px;font-weight:700;font-family:"Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif}
+.brand-txt{display:flex;flex-direction:column;line-height:1.15}
+.brand-txt b{font-size:16px;letter-spacing:.04em}
+.brand-txt small{font-size:9px;letter-spacing:.16em;color:var(--ink-3);margin-top:3px}
+.nav-links{display:flex;gap:26px;margin-left:auto;align-items:center}
+.nav-link{font-size:13.5px;color:var(--ink-2);transition:color .2s}
+.nav-link:hover,.nav-link.is-active{color:var(--acc)}
+.nav-cta{font-size:13px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--acc);color:var(--acc-ink);flex-shrink:0}
+.nav-burger{display:none;flex-direction:column;gap:4px;margin-left:auto;padding:8px}
+.nav-burger span{display:block;width:20px;height:2px;background:var(--ink)}
+.dev{width:100%;height:auto;display:block}
+.hero{position:relative;overflow:hidden;padding:96px 0 84px}
+.hero-in{position:relative;z-index:2}
+.hero-split{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero-title{font-size:clamp(48px,6vw,86px);line-height:1.12;letter-spacing:-.04em;font-weight:700;margin:20px 0 24px}
+.hero-desc{font-size:16.5px;color:var(--ink-2);line-height:1.9;max-width:620px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.hero-note{font-size:11px;letter-spacing:.08em;color:var(--ink-3);margin-top:20px}
+.hero-art{position:relative}
+.stats{padding:0 0 20px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:30px 24px;display:flex;flex-direction:column;gap:6px}
+.stat b{font-size:clamp(22px,2.4vw,34px);font-weight:700;letter-spacing:-.03em}
+.stat span{font-size:13px;color:var(--ink-2)}
+.idea-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.idea-card{padding:34px 30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.idea-no{display:block;font-size:13px;letter-spacing:.14em;color:var(--acc);font-weight:700;margin-bottom:26px}
+.idea-card h3{font-size:20px;line-height:1.4;margin-bottom:14px;letter-spacing:-.01em}
+.idea-card p{font-size:14px;color:var(--ink-2);line-height:1.85}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.prod-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.prod-card:hover{transform:translateY(-6px)}
+.prod-visual{background:var(--surface-2);min-height:238px;display:flex;align-items:center;justify-content:center;padding:32px 26px}
+.prod-visual .dev-phone{max-width:118px}
+.prod-visual .dev-tab{max-width:220px}
+.prod-visual .dev-charge{max-width:140px}
+.prod-info{padding:24px 22px 26px;display:flex;flex-direction:column;flex:1}
+.prod-tag{font-size:11px;letter-spacing:.1em;color:var(--acc);font-weight:700}
+.prod-info h3{font-size:17px;margin:12px 0 10px;letter-spacing:-.01em}
+.prod-info p{font-size:13px;color:var(--ink-2);line-height:1.75;flex:1}
+.prod-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--acc);margin-top:22px}
+.exp-body{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.feat{padding:20px 0;border-bottom:1px solid var(--line);display:flex;gap:22px}
+.feat:first-child{border-top:1px solid var(--line)}
+.feat-no{font-size:12px;font-weight:700;color:var(--acc);letter-spacing:.1em;padding-top:6px}
+.feat h3{font-size:17px;margin-bottom:7px}
+.feat p{font-size:13.5px;color:var(--ink-2);line-height:1.75}
+.exp-visual{position:relative;display:flex;justify-content:center}
+.exp-visual .dev-phone{max-width:220px}
+.exp-key{position:absolute;right:2%;top:42%;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--acc);background:var(--surface);border:1px solid var(--line);padding:8px 14px;border-radius:999px;box-shadow:0 8px 22px -12px var(--ink)}
+.exp-key span{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.steps-wrap{margin-top:70px}
+.steps-title{font-size:20px;margin-bottom:26px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{padding:24px 22px;border-radius:var(--radius);background:var(--surface-2)}
+.step-no{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--acc-ink);font-size:13px;font-weight:700;margin-bottom:16px}
+.step h4{font-size:16px;margin-bottom:8px}
+.step p{font-size:13px;color:var(--ink-2);line-height:1.75}
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.path-item{padding:34px 30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.path-no{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--acc)}
+.path-item h3{font-size:22px;margin:22px 0 12px}
+.path-item p{font-size:14px;color:var(--ink-2);line-height:1.8}
+.history-body{display:grid;grid-template-columns:1.35fr .75fr;gap:48px;align-items:start}
+.time-row{display:grid;grid-template-columns:130px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.time-row:first-child{border-top:1px solid var(--line)}
+.time-row b{font-size:20px;letter-spacing:-.02em;color:var(--acc)}
+.time-row p{font-size:14.5px;color:var(--ink-2);line-height:1.85}
+.promise{padding:34px 30px;background:var(--surface-2);border-radius:var(--radius)}
+.promise h3{font-size:20px;margin-bottom:20px}
+.promise ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+.promise li{font-size:14px;color:var(--ink-2);line-height:1.7;padding-left:20px;position:relative}
+.promise li:before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.news-body{display:grid;grid-template-columns:1.35fr .75fr;gap:48px;align-items:start}
+.news-row{display:grid;grid-template-columns:96px 1fr 20px;gap:22px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.news-row:first-child{border-top:1px solid var(--line)}
+.news-row time{font-size:13px;color:var(--acc);font-weight:700;letter-spacing:.04em;padding-top:4px}
+.news-row h3{font-size:16px;margin-bottom:6px}
+.news-row p{font-size:13px;color:var(--ink-2);line-height:1.7}
+.news-arr{color:var(--ink-3);font-size:15px}
+.quote{padding:36px 32px;background:var(--surface-2);border-radius:var(--radius)}
+.quote-mark{font-size:56px;line-height:.7;color:var(--acc);font-family:Georgia,serif;display:block;margin-bottom:16px}
+.quote h3{font-size:19px;margin-bottom:14px}
+.quote p{font-size:14.5px;color:var(--ink-2);line-height:1.9}
+.cta{padding:104px 0;text-align:center;background:var(--surface-2);position:relative;overflow:hidden}
+.cta-in{position:relative;z-index:2}
+.cta h2{font-size:clamp(30px,4vw,54px);margin:18px 0 14px}
+.cta p{font-size:16px;color:var(--ink-2)}
+.cta-btns{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.foot{padding:64px 0 30px;background:var(--bg-2);border-top:1px solid var(--line)}
+.foot-top{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;padding-bottom:44px}
+.foot-brand{display:flex;gap:12px;align-items:flex-start}
+.foot-brand b{font-size:18px;display:block}
+.foot-brand small{font-size:11.5px;color:var(--ink-3);display:block;margin-top:4px}
+.foot-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.foot-col h4{font-size:13px;margin-bottom:16px}
+.foot-col a{display:block;font-size:13px;color:var(--ink-2);margin-bottom:10px}
+.foot-col a:hover{color:var(--acc)}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);flex-wrap:wrap}
+.foot-note{font-size:11px;color:var(--ink-3);margin-top:14px;opacity:.8}
+.draft-badge{position:fixed;right:20px;bottom:20px;z-index:99;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.94);border:1px solid rgba(0,0,0,.09);box-shadow:0 8px 30px rgba(0,0,0,.10);border-radius:14px;padding:9px 14px 9px 9px;backdrop-filter:blur(10px)}
+.badge-idx{width:30px;height:30px;border-radius:9px;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;font-size:12px;font-weight:700}
+.badge-txt{display:flex;flex-direction:column;line-height:1.3}
+.badge-txt b{font-size:12px;color:#1b1b1f}
+.badge-txt small{font-size:10px;color:#777}
+@media(max-width:1000px){
+  .wrap,.nav-in{width:calc(100% - 40px)}
+  .sec{padding:76px 0}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-cta{margin-left:0}
+  .hero-split{grid-template-columns:1fr;gap:40px}
+  .hero{padding:70px 0 60px}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-body,.history-body,.news-body{grid-template-columns:1fr;gap:36px}
+  .exp-visual{order:-1}
+  .exp-visual .dev-phone{max-width:190px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .idea-grid,.path-grid{grid-template-columns:1fr 1fr}
+  .foot-top{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .wrap,.nav-in{width:calc(100% - 32px)}
+  .sec{padding:58px 0}
+  .hero-title{font-size:40px}
+  h2{font-size:28px}
+  .stats-grid,.idea-grid,.prod-grid,.path-grid,.steps{grid-template-columns:1fr}
+  .time-row{grid-template-columns:1fr;gap:8px}
+  .news-row{grid-template-columns:1fr;gap:6px}
+  .news-arr{display:none}
+  .foot-cols{grid-template-columns:1fr 1fr}
+  .draft-badge{right:12px;bottom:12px;padding:7px 10px 7px 7px}
+  .badge-txt small{display:none}
+}
+
+body{background:#fff}
+h2,.hero-title,.sec-head,.idea-card h3,.path-item h3,.cta h2,.quote h3,.prod-info h3,.step h4,.promise h3{font-family:"Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif}
+.eyebrow{font-family:-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;letter-spacing:.24em;color:var(--acc)}
+.nav{--nav-bg:#fff;border-bottom:2px solid var(--ink);border-radius:0;backdrop-filter:none}
+.brand-mark{border-radius:0;background:var(--ink)}
+.nav-link{font-size:12.5px;letter-spacing:.02em}
+.nav-cta{background:var(--ink);border-radius:0;padding:10px 18px}
+.edit-strip{display:flex;justify-content:space-between;gap:16px;font-size:10.5px;letter-spacing:.2em;color:var(--ink-3);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:34px}
+.hero-edit{padding:40px 0 0}
+.hero-edit .hero-split{gap:60px;align-items:start}
+.hero-edit .hero-title{font-size:clamp(56px,7.6vw,108px);line-height:1.03;letter-spacing:-.06em;font-weight:700;margin:22px 0 26px}
+.edit-ink{color:var(--acc)}
+.edit-rule{display:block;width:100%;max-width:190px;height:5px;background:var(--ink);margin:0 0 26px}
+.hero-edit .hero-desc{font-size:15.5px;max-width:480px}
+.hero-edit .btn{border-radius:0}
+.hero-edit .btn-primary{background:var(--acc);box-shadow:none}
+.hero-edit .btn-primary:hover{box-shadow:none;background:var(--ink)}
+.edit-art{padding-top:20px}
+.edit-frame{background:var(--surface-2);border:1px solid var(--ink);padding:46px 30px 30px;position:relative;display:flex;justify-content:center}
+.edit-frame .dev-phone{max-width:230px}
+.frame-tag{position:absolute;left:16px;top:16px;font-size:10px;letter-spacing:.16em;color:var(--ink-2);font-family:-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif}
+.edit-marquee{margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;white-space:nowrap;overflow:hidden;font-family:-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;font-size:clamp(24px,3.6vw,46px);font-weight:800;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px #b6b6ad}
+.stats{padding-top:6px}
+.stats-grid{gap:0}
+.stat{border-top:3px solid var(--ink);padding:26px 20px 26px 0;border-right:0}
+.stat b{font-family:"Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;font-size:30px}
+.sec-head{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:44px}
+.idea-grid{gap:0}
+.idea-card{border:0;border-right:1px solid var(--line);border-radius:0;padding:0 28px 0 0;background:transparent}
+.idea-card:last-child{border-right:0}
+.idea-card:not(:first-child){padding-left:28px}
+.idea-no{font-family:Georgia,serif;font-size:14px;color:var(--acc);margin-bottom:22px}
+.idea-card h3{font-size:22px}
+.prod-grid{gap:0}
+.prod-card{border:0;border-top:1px solid var(--line);border-radius:0;background:transparent}
+.prod-card:hover{transform:none}
+.prod-card:before{content:"0" counter(pcard);counter-increment:pcard;font-family:Georgia,serif;font-size:12px;color:var(--acc)}
+.prod-grid{counter-reset:pcard}
+.prod-visual{background:var(--surface-2);min-height:250px}
+.prod-info{padding:22px 20px 26px 0}
+.prod-info h3{font-size:18px}
+.prod-link{color:var(--ink);border-bottom:1px solid var(--ink);align-self:flex-start;padding-bottom:3px;margin-top:20px}
+.feat{border-color:var(--line);gap:26px;padding:22px 0}
+.feat:first-child{border-top:1px solid var(--ink)}
+.feat-no{font-family:Georgia,serif;color:var(--acc)}
+.feat h3{font-family:"Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;font-size:20px}
+.exp-visual{background:var(--surface-2);border:1px solid var(--ink);padding:34px}
+.steps-title{font-family:"Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;font-size:24px;border-bottom:1px solid var(--ink);padding-bottom:14px}
+.steps{gap:0}
+.step{border-radius:0;border-top:1px solid var(--line);background:transparent;padding:24px 20px 24px 0}
+.step-no{border-radius:0;background:var(--ink);width:26px;height:26px}
+.step h4{font-size:18px}
+.path-grid{gap:0}
+.path-item{border-radius:0;border:0;border-top:1px solid var(--ink);background:transparent;padding:28px 26px 28px 0}
+.path-no{font-family:Georgia,serif;font-size:40px;color:var(--acc);line-height:1}
+.path-item h3{font-size:24px;margin:18px 0 10px}
+.time-row{border-color:var(--line)}
+.time-row:first-child{border-top:1px solid var(--ink)}
+.time-row b{font-family:Georgia,serif;color:var(--ink)}
+.promise{border-radius:0;border:1px solid var(--ink);background:var(--surface-2)}
+.promise h3{font-size:22px}
+.news-row{border-color:var(--line);grid-template-columns:110px 1fr 20px}
+.news-row:first-child{border-top:1px solid var(--ink)}
+.news-row time{font-family:Georgia,serif;color:var(--acc)}
+.news-row h3{font-family:"Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;font-size:19px}
+.quote{border-radius:0;border:1px solid var(--ink);background:var(--surface-2)}
+.quote-mark{color:var(--acc)}
+.cta{background:#fff;border-top:1px solid var(--ink)}
+.cta h2{font-size:clamp(34px,5.2vw,68px);letter-spacing:-.05em}
+.cta .btn{border-radius:0}
+.cta .btn-ghost{border:1px solid var(--ink)}
+.foot{background:#fff;border-top:2px solid var(--ink)}
+@media(max-width:1000px){.edit-strip span:nth-child(2){display:none}.hero-edit .hero-split{gap:36px}.edit-marquee{font-size:26px}.idea-card{border-right:0;border-bottom:1px solid var(--line);padding:20px 0}.idea-card:not(:first-child){padding-left:0}}
+@media(max-width:640px){.edit-strip span:last-child{display:none}}
+
+/* 主题里的 .hero-xxx .hero-title 特异性高于基础媒体查询，需在最后用更高特异性覆盖 */
+@media(max-width:640px){
+  body.t-cloud .hero-title{font-size:40px}
+  body.t-warm .hero-title{font-size:38px}
+  body.t-mint .hero-title{font-size:40px}
+  body.t-lilac .hero-title{font-size:40px}
+  body.t-editorial .hero-title{font-size:42px}
+  body .hero-desc{font-size:15px}
+  body .hero{padding-top:48px}
+  body .hero-mini{font-size:11px;max-width:100%;white-space:normal;line-height:1.7}
+  body .hero-btns .btn{padding:12px 20px;font-size:13px}
+  body .edit-marquee{font-size:20px}
+  body .lucky-badge{font-size:11px}
+  body .hero-stage{margin-top:36px}
+  body .hero-collage{gap:10px}
+  body .glass-hero{padding:24px 18px 18px}
+  body .stat{padding:22px 20px}
+  body .idea-card,body .path-item,body .promise,body .quote{padding:26px 22px}
+}
+
+</style>
+</head>
+<body class="t-editorial">
+
+<header class="nav" id="top">
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="brand-mark">幸</span><span class="brand-txt"><b>幸运无限</b><small>LUCKY INFINITE</small></span></a>
+    <nav class="nav-links"><a href="#top" class="nav-link is-active">首页</a><a href="#s1" class="nav-link">产品中心</a><a href="#s2" class="nav-link">服务支持</a><a href="#s3" class="nav-link">购买渠道</a><a href="#s4" class="nav-link">合作代理</a><a href="#s5" class="nav-link">关于我们</a><a href="#s6" class="nav-link">联系我们</a></nav>
+    <a class="nav-cta" href="#s8">联系我们</a>
+    <button class="nav-burger" aria-label="展开菜单"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<section class="hero hero-edit" id="s0">
+  <div class="wrap">
+    <div class="edit-strip"><span>ISSUE 01 / 2026</span><span>LUCKY INFINITE BRAND</span><span>SHENZHEN · CHINA</span></div>
+    <div class="hero-in hero-split">
+      <div class="hero-copy">
+        <span class="eyebrow">AI 时代的幸运数码品牌</span>
+        <h1 class="hero-title">拥有它，<br>就拥有<span class="edit-ink">幸运</span></h1>
+        <span class="edit-rule"></span>
+        <p class="hero-desc">幸运无限专注「AI + 精致化数码」，为不同需求、不同想法的用户，带来有灵魂、有趣味的产品。专属 Lucky 键一键唤醒 AI；机身尺寸比例与主流旗舰一致，配件随手可买、处处通用。</p>
+        <div class="hero-btns">
+      <a class="btn btn-primary" href="#s3">了解旗舰品 Lucky Mini<span class="arr">↗</span></a>
+      <a class="btn btn-ghost" href="#s3">浏览全部产品</a>
+    </div>
+      </div>
+      <div class="hero-art edit-art">
+        <div class="edit-frame">
+<svg class="dev dev-phone " viewBox="0 0 260 500" role="img" aria-label="Lucky Mini 3.7 英寸产品示意图">
+  <defs>
+    <linearGradient id="pbody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--dev-1)"/><stop offset="1" stop-color="var(--dev-2)"/>
+    </linearGradient>
+    <linearGradient id="pscreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--scr-1)"/><stop offset="1" stop-color="var(--scr-2)"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="8" width="232" height="484" rx="42" fill="var(--dev-shadow)" opacity=".22"/>
+  <rect x="10" y="4" width="232" height="484" rx="42" fill="url(#pbody)" stroke="var(--dev-line)" stroke-width="2"/>
+  <rect x="17" y="11" width="218" height="470" rx="36" fill="none" stroke="var(--dev-hi)" stroke-width="1.5" opacity=".8"/>
+  <rect x="24" y="20" width="204" height="452" rx="30" fill="url(#pscreen)"/>
+  <rect x="99" y="27" width="54" height="9" rx="4.5" fill="var(--scr-ink)" opacity=".35"/>
+  <text x="40" y="76" fill="var(--scr-ink)" font-size="12" opacity=".65" font-family="system-ui">9:41</text>
+  <text x="40" y="126" fill="var(--scr-ink)" font-size="30" font-weight="600" font-family="system-ui">Lucky OS</text>
+  <text x="40" y="148" fill="var(--scr-ink)" font-size="11" opacity=".7" font-family="system-ui">今天也要有好运</text>
+  <g opacity=".92">
+    <rect x="40" y="180" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <circle cx="82" cy="222" r="19" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".8"/>
+    <path d="M82 210 v12 l8 5" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="132" y="180" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <path d="M158 224 q16 -30 32 0" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="174" cy="207" r="5" fill="var(--acc)"/>
+    <rect x="40" y="272" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <rect x="62" y="294" width="40" height="40" rx="10" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".8"/>
+    <rect x="132" y="272" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <path d="M150 316 l14 -14 12 9 12 -16" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="40" y="386" width="176" height="66" rx="24" fill="var(--scr-card)"/>
+  <circle cx="72" cy="419" r="13" fill="var(--acc)" opacity=".95"/>
+  <text x="98" y="425" fill="var(--scr-ink)" font-size="13" font-family="system-ui">按下 Lucky 键</text>
+  <rect x="242" y="176" width="9" height="52" rx="4.5" fill="var(--acc)"/>
+  <rect x="242" y="240" width="9" height="34" rx="4.5" fill="var(--dev-line)" opacity=".7"/>
+</svg><span class="frame-tag">FIG. 01 — LUCKY MINI 3.7"</span></div>
+        <p class="hero-note">产品示意图 · 正式上线替换为实拍图</p>
+      </div>
+    </div>
+    <div class="edit-marquee">HAVE IT, HAVE LUCK · 拥有它，就拥有幸运 · HAVE IT, HAVE LUCK</div>
+  </div>
+</section><section class="stats" id="s1"><div class="wrap stats-grid"><div class="stat"><b>3.7 英寸</b><span>旗舰小手机尺寸，掌心可握</span></div><div class="stat"><b>1 键</b><span>Lucky 键，一键唤醒 AI</span></div><div class="stat"><b>全系通用</b><span>配件生态，降低选购门槛</span></div><div class="stat"><b>持续更新</b><span>产品矩阵持续扩展中</span></div></div></section><section class="sec ideas" id="s2"><div class="wrap"><div class="sec-head"><span class="eyebrow">BRAND PHILOSOPHY · 品牌理念</span><h2>幸运之选，让你想到它</h2><p class="lead">我们不是"别人有、我也有"的生产厂家，而是消费者的朋友：洞察你的需求，搜罗你的心意，把有灵魂、有温度的产品交到你手上。</p></div><div class="idea-grid"><article class="idea-card"><span class="idea-no">01</span><h3>拥有它，就拥有幸运</h3><p>无论触摸还是使用，都能获得无穷的愉悦感。幸运不是玄学，是每一次顺手的操作、每一次被理解的需求。</p></article><article class="idea-card"><span class="idea-no">02</span><h3>有趣的灵魂，百里挑一</h3><p>我们为用户带来更多幸运，也鼓励用户分享想法、分享快乐与喜悦。</p></article><article class="idea-card"><span class="idea-no">03</span><h3>工厂 + 品牌方</h3><p>自产自销、有灵魂、有趣味。国内「幸运无限」，海外「LUCY WHITE」，双品牌服务全球用户。</p></article></div></div></section><section class="sec products" id="s3"><div class="wrap"><div class="sec-head"><span class="eyebrow">PRODUCTS · 产品矩阵</span><h2>每一款，都是幸运之选</h2><p class="lead">以 Lucky Mini 为核心旗舰，平板与智能配件持续补充覆盖。每一样产品都围绕「AI + 幸运感」打造。</p></div><div class="prod-grid"><article class="prod-card">
+          <div class="prod-visual">
+<svg class="dev dev-phone " viewBox="0 0 260 500" role="img" aria-label="Lucky Mini 3.7 英寸产品示意图">
+  <defs>
+    <linearGradient id="pbody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--dev-1)"/><stop offset="1" stop-color="var(--dev-2)"/>
+    </linearGradient>
+    <linearGradient id="pscreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--scr-1)"/><stop offset="1" stop-color="var(--scr-2)"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="8" width="232" height="484" rx="42" fill="var(--dev-shadow)" opacity=".22"/>
+  <rect x="10" y="4" width="232" height="484" rx="42" fill="url(#pbody)" stroke="var(--dev-line)" stroke-width="2"/>
+  <rect x="17" y="11" width="218" height="470" rx="36" fill="none" stroke="var(--dev-hi)" stroke-width="1.5" opacity=".8"/>
+  <rect x="24" y="20" width="204" height="452" rx="30" fill="url(#pscreen)"/>
+  <rect x="99" y="27" width="54" height="9" rx="4.5" fill="var(--scr-ink)" opacity=".35"/>
+  <text x="40" y="76" fill="var(--scr-ink)" font-size="12" opacity=".65" font-family="system-ui">9:41</text>
+  <text x="40" y="126" fill="var(--scr-ink)" font-size="30" font-weight="600" font-family="system-ui">Lucky OS</text>
+  <text x="40" y="148" fill="var(--scr-ink)" font-size="11" opacity=".7" font-family="system-ui">今天也要有好运</text>
+  <g opacity=".92">
+    <rect x="40" y="180" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <circle cx="82" cy="222" r="19" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".8"/>
+    <path d="M82 210 v12 l8 5" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="132" y="180" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <path d="M158 224 q16 -30 32 0" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="174" cy="207" r="5" fill="var(--acc)"/>
+    <rect x="40" y="272" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <rect x="62" y="294" width="40" height="40" rx="10" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".8"/>
+    <rect x="132" y="272" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <path d="M150 316 l14 -14 12 9 12 -16" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="40" y="386" width="176" height="66" rx="24" fill="var(--scr-card)"/>
+  <circle cx="72" cy="419" r="13" fill="var(--acc)" opacity=".95"/>
+  <text x="98" y="425" fill="var(--scr-ink)" font-size="13" font-family="system-ui">按下 Lucky 键</text>
+  <rect x="242" y="176" width="9" height="52" rx="4.5" fill="var(--acc)"/>
+  <rect x="242" y="240" width="9" height="34" rx="4.5" fill="var(--dev-line)" opacity=".7"/>
+</svg></div>
+          <div class="prod-info"><span class="prod-tag">核心旗舰 · AI</span><h3>Lucky Mini 3.7 英寸</h3><p>掌心尺寸的完整安卓智能小机，Lucky 键一键唤醒 AI，配件随手可买。</p>
+          <a class="prod-link" href="#s8">查看详情<span>↗</span></a></div>
+        </article><article class="prod-card">
+          <div class="prod-visual">
+<svg class="dev dev-tab " viewBox="0 0 460 330" role="img" aria-label="LUCKY Tab 平板产品示意图">
+  <defs>
+    <linearGradient id="tbody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--dev-1)"/><stop offset="1" stop-color="var(--dev-2)"/>
+    </linearGradient>
+    <linearGradient id="tscreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--scr-1)"/><stop offset="1" stop-color="var(--scr-2)"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="10" width="440" height="310" rx="30" fill="var(--dev-shadow)" opacity=".2"/>
+  <rect x="8" y="6" width="440" height="310" rx="30" fill="url(#tbody)" stroke="var(--dev-line)" stroke-width="2"/>
+  <rect x="22" y="20" width="412" height="282" rx="20" fill="url(#tscreen)"/>
+  <circle cx="230" cy="13" r="3.5" fill="var(--dev-line)" opacity=".6"/>
+  <text x="46" y="58" fill="var(--scr-ink)" font-size="11" opacity=".65" font-family="system-ui">9:41  ·  LUCKY TAB</text>
+  <text x="46" y="106" fill="var(--scr-ink)" font-size="28" font-weight="600" font-family="system-ui">把幸运，放大一点</text>
+  <text x="46" y="130" fill="var(--scr-ink)" font-size="12" opacity=".72" font-family="system-ui">AI 拍学 · AI 忘物识别 · 完整安卓系统</text>
+  <g>
+    <rect x="46" y="156" width="118" height="112" rx="18" fill="var(--scr-card)"/>
+    <circle cx="105" cy="200" r="20" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".75"/>
+    <path d="M95 200 l8 8 14 -16" stroke="var(--acc)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <rect x="174" y="156" width="118" height="112" rx="18" fill="var(--scr-card)"/>
+    <path d="M196 232 q37 -46 74 0" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" opacity=".7"/>
+    <circle cx="233" cy="198" r="12" fill="var(--acc)" opacity=".9"/>
+    <rect x="302" y="156" width="108" height="112" rx="18" fill="var(--scr-card)"/>
+    <rect x="326" y="182" width="60" height="60" rx="14" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".7"/>
+  </g>
+  <rect x="452" y="128" width="7" height="44" rx="3.5" fill="var(--acc)"/>
+</svg></div>
+          <div class="prod-info"><span class="prod-tag">即将上市</span><h3>LUCKY Tab 8.68 英寸</h3><p>8.68 英寸平板，轻便与视野兼得，搭载 AI 能力与 Lucky 键。</p>
+          <a class="prod-link" href="#s8">获取发布通知<span>↗</span></a></div>
+        </article><article class="prod-card">
+          <div class="prod-visual">
+<svg class="dev dev-tab " viewBox="0 0 460 330" role="img" aria-label="LUCKY Tab 平板产品示意图">
+  <defs>
+    <linearGradient id="tbody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--dev-1)"/><stop offset="1" stop-color="var(--dev-2)"/>
+    </linearGradient>
+    <linearGradient id="tscreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--scr-1)"/><stop offset="1" stop-color="var(--scr-2)"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="10" width="440" height="310" rx="30" fill="var(--dev-shadow)" opacity=".2"/>
+  <rect x="8" y="6" width="440" height="310" rx="30" fill="url(#tbody)" stroke="var(--dev-line)" stroke-width="2"/>
+  <rect x="22" y="20" width="412" height="282" rx="20" fill="url(#tscreen)"/>
+  <circle cx="230" cy="13" r="3.5" fill="var(--dev-line)" opacity=".6"/>
+  <text x="46" y="58" fill="var(--scr-ink)" font-size="11" opacity=".65" font-family="system-ui">9:41  ·  LUCKY TAB</text>
+  <text x="46" y="106" fill="var(--scr-ink)" font-size="28" font-weight="600" font-family="system-ui">把幸运，放大一点</text>
+  <text x="46" y="130" fill="var(--scr-ink)" font-size="12" opacity=".72" font-family="system-ui">AI 拍学 · AI 忘物识别 · 完整安卓系统</text>
+  <g>
+    <rect x="46" y="156" width="118" height="112" rx="18" fill="var(--scr-card)"/>
+    <circle cx="105" cy="200" r="20" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".75"/>
+    <path d="M95 200 l8 8 14 -16" stroke="var(--acc)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <rect x="174" y="156" width="118" height="112" rx="18" fill="var(--scr-card)"/>
+    <path d="M196 232 q37 -46 74 0" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" opacity=".7"/>
+    <circle cx="233" cy="198" r="12" fill="var(--acc)" opacity=".9"/>
+    <rect x="302" y="156" width="108" height="112" rx="18" fill="var(--scr-card)"/>
+    <rect x="326" y="182" width="60" height="60" rx="14" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".7"/>
+  </g>
+  <rect x="452" y="128" width="7" height="44" rx="3.5" fill="var(--acc)"/>
+</svg></div>
+          <div class="prod-info"><span class="prod-tag">即将上市</span><h3>LUCKY Tab 10.1 英寸</h3><p>10.1 英寸平板，学习、办公、家庭娱乐全场景覆盖。</p>
+          <a class="prod-link" href="#s8">获取发布通知<span>↗</span></a></div>
+        </article><article class="prod-card">
+          <div class="prod-visual">
+<svg class="dev dev-charge " viewBox="0 0 280 280" role="img" aria-label="Lucky Charge 智能充电器产品示意图">
+  <defs>
+    <linearGradient id="cbody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--dev-1)"/><stop offset="1" stop-color="var(--dev-2)"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="140" cy="238" rx="92" ry="14" fill="var(--dev-shadow)" opacity=".16"/>
+  <rect x="52" y="54" width="176" height="176" rx="48" fill="url(#cbody)" stroke="var(--dev-line)" stroke-width="2"/>
+  <rect x="62" y="64" width="156" height="156" rx="40" fill="none" stroke="var(--dev-hi)" stroke-width="1.5" opacity=".8"/>
+  <circle cx="140" cy="142" r="52" fill="var(--scr-card)" opacity=".9"/>
+  <path d="M148 112 l-26 34 h18 l-8 26 26 -34 h-18 z" fill="var(--acc)"/>
+  <rect x="112" y="16" width="16" height="38" rx="4" fill="var(--dev-line)" opacity=".75"/>
+  <rect x="152" y="16" width="16" height="38" rx="4" fill="var(--dev-line)" opacity=".75"/>
+  <rect x="118" y="226" width="44" height="7" rx="3.5" fill="var(--acc)" opacity=".6"/>
+</svg></div>
+          <div class="prod-info"><span class="prod-tag">智能充电器 · 即将上市</span><h3>Lucky Charge</h3><p>围绕桌面与出行充电场景设计，与 Lucky 生态联动。</p>
+          <a class="prod-link" href="#s8">敬请期待<span>↗</span></a></div>
+        </article></div></div></section><section class="sec experience" id="s4"><div class="wrap"><div class="sec-head"><span class="eyebrow">EXPERIENCE · 核心体验</span><h2>配件通用，AI 一键唤醒</h2></div>
+      <div class="exp-body"><div class="feat-list"><div class="feat"><span class="feat-no">01</span><div><h3>主流旗舰配件通用</h3><p>机身尺寸比例与主流旗舰机型保持一致，保护膜、保护壳、充电器等配件随手可买。</p></div></div><div class="feat"><span class="feat-no">02</span><div><h3>专属 Lucky 键</h3><p>硬件级快捷键，一键直达 AI 对话，无需解锁、无需翻找应用。</p></div></div><div class="feat"><span class="feat-no">03</span><div><h3>原创外观设计</h3><p>自主设计语言，颜值在线且独具辨识度。</p></div></div><div class="feat"><span class="feat-no">04</span><div><h3>设计中的文化点缀</h3><p>将东方美学元素作为设计语言点缀，年轻、精致、不落俗套。</p></div></div></div>
+      <div class="exp-visual">
+<svg class="dev dev-phone " viewBox="0 0 260 500" role="img" aria-label="Lucky Mini 3.7 英寸产品示意图">
+  <defs>
+    <linearGradient id="pbody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--dev-1)"/><stop offset="1" stop-color="var(--dev-2)"/>
+    </linearGradient>
+    <linearGradient id="pscreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="var(--scr-1)"/><stop offset="1" stop-color="var(--scr-2)"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="8" width="232" height="484" rx="42" fill="var(--dev-shadow)" opacity=".22"/>
+  <rect x="10" y="4" width="232" height="484" rx="42" fill="url(#pbody)" stroke="var(--dev-line)" stroke-width="2"/>
+  <rect x="17" y="11" width="218" height="470" rx="36" fill="none" stroke="var(--dev-hi)" stroke-width="1.5" opacity=".8"/>
+  <rect x="24" y="20" width="204" height="452" rx="30" fill="url(#pscreen)"/>
+  <rect x="99" y="27" width="54" height="9" rx="4.5" fill="var(--scr-ink)" opacity=".35"/>
+  <text x="40" y="76" fill="var(--scr-ink)" font-size="12" opacity=".65" font-family="system-ui">9:41</text>
+  <text x="40" y="126" fill="var(--scr-ink)" font-size="30" font-weight="600" font-family="system-ui">Lucky OS</text>
+  <text x="40" y="148" fill="var(--scr-ink)" font-size="11" opacity=".7" font-family="system-ui">今天也要有好运</text>
+  <g opacity=".92">
+    <rect x="40" y="180" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <circle cx="82" cy="222" r="19" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".8"/>
+    <path d="M82 210 v12 l8 5" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="132" y="180" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <path d="M158 224 q16 -30 32 0" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="174" cy="207" r="5" fill="var(--acc)"/>
+    <rect x="40" y="272" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <rect x="62" y="294" width="40" height="40" rx="10" fill="none" stroke="var(--scr-ink)" stroke-width="2.5" opacity=".8"/>
+    <rect x="132" y="272" width="84" height="84" rx="22" fill="var(--scr-card)"/>
+    <path d="M150 316 l14 -14 12 9 12 -16" stroke="var(--scr-ink)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="40" y="386" width="176" height="66" rx="24" fill="var(--scr-card)"/>
+  <circle cx="72" cy="419" r="13" fill="var(--acc)" opacity=".95"/>
+  <text x="98" y="425" fill="var(--scr-ink)" font-size="13" font-family="system-ui">按下 Lucky 键</text>
+  <rect x="242" y="176" width="9" height="52" rx="4.5" fill="var(--acc)"/>
+  <rect x="242" y="240" width="9" height="34" rx="4.5" fill="var(--dev-line)" opacity=".7"/>
+</svg><div class="exp-key"><span></span>Lucky 键</div></div></div>
+      <div class="steps-wrap"><h3 class="steps-title">Lucky 键工作流</h3><div class="steps"><div class="step"><span class="step-no">1</span><h4>按下</h4><p>机身侧键实体触发，无需解锁、无需进入应用。</p></div><div class="step"><span class="step-no">2</span><h4>唤醒</h4><p>一键开启 AI 对话，国内外服务按地区提供。</p></div><div class="step"><span class="step-no">3</span><h4>记录</h4><p>AI 拍照、AI 拍学、忘物识别等能力随按随用。</p></div><div class="step"><span class="step-no">4</span><h4>分享</h4><p>把好用的、好玩的、幸运的瞬间分享出去。</p></div></div></div>
+    </div></section><section class="sec path" id="s5"><div class="wrap">
+      <div class="sec-head"><span class="eyebrow">OUR PATH · 品牌发展路径</span><h2>从一款好产品，到一个好品牌</h2></div>
+      <div class="path-grid"><div class="path-item"><span class="path-no">01</span><h3>专注细分</h3><p>从细分需求出发，打造让人一眼记住的产品。</p></div><div class="path-item"><span class="path-no">02</span><h3>持续创新</h3><p>以 AI 技术为核心，不断推出有特色、有温度的新品。</p></div><div class="path-item"><span class="path-no">03</span><h3>走向全球</h3><p>依托海外品牌 LUCY WHITE 与独立站，把幸运带给全球用户。</p></div></div>
+    </div></section><section class="sec history" id="s6"><div class="wrap">
+      <div class="sec-head"><span class="eyebrow">MILESTONES · 品牌历程</span><h2>十余年行业积淀，一次品牌出发</h2></div>
+      <div class="history-body"><div class="timeline"><div class="time-row"><b>2010 年代</b><p>团队深耕消费电子行业，覆盖电商、系统集成、生产制造全链路，经营平板、手机、智能手表等产品。</p></div><div class="time-row"><b>2024</b><p>完成从传统电商到内容电商的转型，直播与短视频渠道布局成熟。</p></div><div class="time-row"><b>2026</b><p>确立「幸运无限」品牌，发布 AI 智能硬件产品线，启动品牌出海。</p></div></div>
+      <aside class="promise"><h3>我们的坚持</h3><ul><li>自有研发、生产与销售体系，品质自己把关。</li><li>坚持原创设计，做有辨识度的产品。</li><li>以用户需求为先，持续打磨体验。</li><li>无负债经营、现金流稳健，值得长期信赖。</li></ul></aside></div>
+    </div></section><section class="sec news" id="s7"><div class="wrap">
+      <div class="sec-head"><span class="eyebrow">JOURNAL · 品牌动态</span><h2>幸运无限正在发生</h2></div>
+      <div class="news-body"><div class="news-list"><article class="news-row"><time>2026-10</time><div><h3>Lucky Mini 3.7 英寸旗舰小手机设计定稿</h3><p>原创外观、专属 Lucky 键、主流旗舰配件通用。</p></div><span class="news-arr">↗</span></article><article class="news-row"><time>2026-09</time><div><h3>AI 能力进入实测阶段</h3><p>Lucky 键一键唤醒 AI 对话，国内外按地区接入主流大模型。</p></div><span class="news-arr">↗</span></article><article class="news-row"><time>2026-08</time><div><h3>「幸运之选」品牌标签正式发布</h3><p>品牌定位、理念与产品线对外统一。</p></div><span class="news-arr">↗</span></article><article class="news-row"><time>2026-07</time><div><h3>海外官网与独立站启动筹备</h3><p>LUCY WHITE 海外品牌同步亮相。</p></div><span class="news-arr">↗</span></article></div>
+      <blockquote class="quote"><span class="quote-mark">“</span><h3>我们相信的事</h3><p>品牌是长期的工作。比起产品数量，我们更在意是否被用户记住、被用户喜欢。所以第一款产品，我们选择做得足够特别。</p></blockquote></div>
+    </div></section><section class="cta" id="s8"><div class="wrap cta-in">
+      <span class="eyebrow">JOIN US · 合作与联系</span>
+      <h2>下一个幸运，也许由你带来</h2><p>我们正在寻找电商分销、线下渠道、售后服务与内容创作的合作伙伴。</p>
+      <div class="cta-btns"><a class="btn btn-primary" href="#s7">查看合作方式</a><a class="btn btn-ghost" href="#s8">联系我们</a></div>
+    </div></section><footer class="foot"><div class="wrap">
+      <div class="foot-top"><div class="foot-brand"><span class="brand-mark">幸</span><div><b>幸运无限</b><small>Lucky Infinite · 海外 LUCY WHITE</small></div></div>
+      <div class="foot-cols"><div class="foot-col"><h4>产品</h4><a href="#s3">Lucky Mini 3.7 英寸</a><a href="#s3">LUCKY Tab 8.68 英寸</a><a href="#s3">LUCKY Tab 10.1 英寸</a><a href="#s3">Lucky Charge</a></div><div class="foot-col"><h4>支持</h4><a href="#s3">服务支持</a><a href="#s3">保修政策</a><a href="#s3">配件适配查询</a><a href="#s3">常见问题</a></div><div class="foot-col"><h4>品牌</h4><a href="#s3">关于我们</a><a href="#s3">品牌动态</a><a href="#s3">合作代理</a><a href="#s3">联系我们</a></div></div></div>
+      <div class="foot-bottom"><span>© 2026 幸运无限 · Lucky Infinite · lucky-infinite.com</span><span>AI 时代的幸运数码品牌　|　中国广东省深圳市</span></div>
+      <p class="foot-note">本页为视觉设计稿，文案取自官网公开版文案稿 v1.0；产品图形为示意图。</p>
+    </div></footer><div class="draft-badge"><span class="badge-idx">05</span><span class="badge-txt"><b>杂志 · 编辑排版</b><small>EDITORIAL / PRINT</small></span></div>
+<script>
+document.querySelectorAll('.nav-link,.prod-link,.btn,.foot-col a').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=this.getAttribute('href')||'';
+    if(h.startsWith('#')){e.preventDefault();var el=document.querySelector(h);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+var burger=document.querySelector('.nav-burger');
+if(burger)burger.addEventListener('click',function(){
+  var n=document.querySelector('.nav-links');
+  if(!n)return;
+  var open=n.style.display==='flex';
+  n.style.display=open?'':'flex';
+  if(!open)Object.assign(n.style,{position:'absolute',top:'72px',left:'0',right:'0',background:'var(--bg-2)',flexDirection:'column',padding:'18px 24px',gap:'14px',borderBottom:'1px solid var(--line)',boxShadow:'0 20px 30px -20px rgba(0,0,0,.3)'});
+});
+</script>
+</body>
+</html>

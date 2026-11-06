@@ -1,0 +1,6 @@
+_qa/
+.DS_Store
+*.log
+*.tmp
+.workbuddy/
+__pycache__/
